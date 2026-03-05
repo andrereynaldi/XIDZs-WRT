@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Bash version check (require 4+ for associative arrays)
 if (( BASH_VERSINFO[0] < 4 )); then
     echo "Error: This script requires bash version 4 or higher." >&2

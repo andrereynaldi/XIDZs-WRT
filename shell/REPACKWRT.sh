@@ -48,7 +48,7 @@ repackwrt() {
     log "INFO" "Using Branch: $BRANCH"
 
     # Define repo URLs and directories
-    local OPHUB_REPO="https://github.com/syntax-xidz/amlogic-s9xxx-openwrt/archive/refs/heads/${BRANCH}.zip"
+    local OPHUB_REPO="https://github.com/andrereynaldi/amlogic-s9xxx-openwrt/archive/refs/heads/${BRANCH}.zip"
     local ULO_REPO="https://github.com/syntax-xidz/ULO-Builder/archive/refs/heads/${BRANCH}.zip"
     local work_dir="$GITHUB_WORKSPACE/$WORKING_DIR"
     local output_dir="${work_dir}/compiled_images"
@@ -74,7 +74,7 @@ repackwrt() {
         log "WARNING" "Branch download failed. Fallback to main."
         ZIP_FILE="main.zip"
         if [[ "$builder_type" == "--ophub" ]]; then
-            repo_url="https://github.com/syntax-xidz/amlogic-s9xxx-openwrt/archive/refs/heads/main.zip"
+            repo_url="https://github.com/andrereynaldi/amlogic-s9xxx-openwrt/archive/refs/heads/main.zip"
             builder_dir="${work_dir}/amlogic-s9xxx-openwrt-main"
         else
             repo_url="https://github.com/syntax-xidz/ULO-Builder/archive/refs/heads/main.zip"

@@ -22,7 +22,7 @@ uhttpd uhttpd-mod-ubus luci luci-ssl openssh-sftp-server adb curl wget-ssl \
 httping htop jq tar unzip coreutils-base64 coreutils-sleep coreutils-stat"
 
 # ETHERNET & MODEM DRIVERS
-PACKAGES+=" kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 kmod-usb-net-asix kmod-usb-net-asix-ax88179"
+PACKAGES+=" -kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 -kmod-usb-net-asix -kmod-usb-net-asix-ax88179"
 PACKAGES+=" kmod-mii kmod-usb-net kmod-usb-wdm kmod-usb-net-rndis kmod-usb-net-cdc-ether kmod-usb-net-cdc-ncm kmod-usb-net-sierrawireless \
 kmod-usb-net-qmi-wwan uqmi luci-proto-qmi kmod-usb-acm kmod-usb-net-huawei-cdc-ncm kmod-usb-net-cdc-mbim umbim \
 kmod-usb-serial kmod-usb-serial-option kmod-usb-serial-wwan kmod-usb-serial-qualcomm kmod-usb-serial-sierrawireless \
@@ -30,8 +30,8 @@ modemmanager luci-proto-modemmanager qmi-utils mbim-utils usbutils luci-proto-nc
 kmod-usb2 kmod-usb-ehci kmod-usb3 kmod-nls-utf8 kmod-macvlan usb-modeswitch xmm-modem luci-proto-xmm"
 
 # MODEM TOOLS
-PACKAGES+=" atinout modeminfo modemband sms-tool luci-app-modeminfo luci-app-modemband luci-app-sms-tool-js picocom minicom"
-PACKAGES+=" modeminfo-serial-dell modeminfo-serial-fibocom modeminfo-serial-sierra modeminfo-serial-tw modeminfo-serial-xmm"
+#PACKAGES+=" atinout modeminfo modemband sms-tool luci-app-modeminfo luci-app-modemband luci-app-sms-tool-js picocom minicom"
+#PACKAGES+=" modeminfo-serial-dell modeminfo-serial-fibocom modeminfo-serial-sierra modeminfo-serial-tw modeminfo-serial-xmm"
 
 # STORAGE
 PACKAGES+=" kmod-usb-storage luci-app-diskman"
@@ -86,7 +86,7 @@ add_tunnel_packages() {
 }
 
 # NETMONITOR + REMOTE
-PACKAGES+=" netdata vnstat2 vnstati2 luci-app-netmonitor tailscale luci-app-tailscale"
+#PACKAGES+=" netdata vnstat2 vnstati2 luci-app-netmonitor tailscale luci-app-tailscale"
 
 # PHP8
 PACKAGES+=" php8 php8-cli php8-fastcgi php8-fpm php8-mod-session php8-mod-ctype php8-mod-fileinfo php8-mod-zip php8-mod-iconv php8-mod-mbstring"
@@ -95,9 +95,9 @@ PACKAGES+=" php8 php8-cli php8-fastcgi php8-fpm php8-mod-session php8-mod-ctype 
 PACKAGES+=" luci-theme-argon" #luci-theme-alpha
 
 # MISC
-MISC+=" atc-fib-l8x0_gl atc-fib-fm350_gl luci-proto-atc luci-app-mmconfig luci-app-3ginfo-lite luci-app-ttl luci-app-droidnet \
-luci-app-mactodong internet-detector internet-detector-mod-modem-restart luci-app-internet-detector luci-app-ipinfo luci-app-eqosplus \
-ookla-speedtest luci-app-ttyd luci-app-tinyfm luci-app-ramfree luci-app-poweroffdevice luci-app-lite-watchdog"
+MISC+=" -atc-fib-l8x0_gl -atc-fib-fm350_gl -luci-proto-atc -luci-app-mmconfig -luci-app-3ginfo-lite luci-app-ttl -luci-app-droidnet \
+luci-app-mactodong -internet-detector -internet-detector-mod-modem-restart -luci-app-internet-detector -luci-app-ipinfo luci-app-eqosplus \
+ookla-speedtest luci-app-ttyd luci-app-tinyfm luci-app-ramfree luci-app-poweroffdevice -luci-app-lite-watchdog"
 
 # DISABLED SERVICES
 DISABLED_SERVICES="xidzs zram"

@@ -68,12 +68,12 @@ configure_amlogic_permissions() {
             
             # Netifd and wifi files sett permission
             local netifd_files=(
-                "files/lib/netifd/proto/3g.sh"
-                "files/lib/netifd/proto/atc.sh"
+#                "files/lib/netifd/proto/3g.sh"
+#                "files/lib/netifd/proto/atc.sh"
                 "files/lib/netifd/proto/dhcp.sh"
                 "files/lib/netifd/proto/dhcpv6.sh"
                 "files/lib/netifd/proto/ncm.sh"
-                "files/lib/netifd/proto/wwan.sh"
+#                "files/lib/netifd/proto/wwan.sh"
                 "files/lib/netifd/wireless/mac80211.sh"
                 "files/lib/netifd/dhcp-get-server.sh"
                 "files/lib/netifd/dhcp.script"
@@ -123,12 +123,12 @@ download_custom_scripts() {
     log "INFO" "Downloading custom scripts"
     
     local scripts=(
-        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xdev|files/usr/bin"
-        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/syntax|files/usr/bin"
-        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xidz|files/usr/bin"
+#        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xdev|files/usr/bin"
+#        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/syntax|files/usr/bin"
+#        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xidz|files/usr/bin"
         "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/x-gpio|files/usr/bin"
         "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/x-gpioled|files/usr/bin"
-        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xidzs|files/etc/init.d"
+#        "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/xidzs|files/etc/init.d"
         "https://raw.githubusercontent.com/syntax-xidz/contenx/main/xcli/issue|files/etc/init.d"
     )
     
@@ -176,13 +176,13 @@ configure_file_permissions() {
     
     # Custom scripts and sett permission
     local custom_scripts=(
-        "files/usr/bin/xdev"
-        "files/usr/bin/syntax"
+#        "files/usr/bin/xdev"
+#        "files/usr/bin/syntax"
         "files/usr/bin/xidz"
         "files/usr/bin/x-gpio"
         "files/usr/bin/x-gpioled"
         "files/usr/bin/repair_ro"
-        "files/usr/lib/ModemManager/connection.d/10-report-down"
+#        "files/usr/lib/ModemManager/connection.d/10-report-down"
     )
     
     log "INFO" "Sett permissions for custom scripts"

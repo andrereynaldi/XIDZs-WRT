@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Load include script
 . ./shell/INCLUDE.sh
 

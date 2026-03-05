@@ -1,6 +1,6 @@
 #!/bin/sh
 
-exec > "/root/setup-xidzswrt.log" 2>&1
+exec > "/root/setup.log" 2>&1
 
 echo "$(date)"
 
@@ -25,7 +25,7 @@ echo "src/gz custom_packages https://dl.openwrt.ai/latest/packages/$(grep "OPENW
 
 # Basic system
 echo "Setting root password..."
-(echo "quenx"; sleep 1; echo "quenx") | passwd > /dev/null
+(echo "DreamOs"; sleep 1; echo "DreamOs") | passwd > /dev/null
 
 echo "Configuring hostname and timezone..."
 uci batch <<EOF
@@ -33,9 +33,10 @@ set system.@system[0].hostname='XIDZsWRT'
 set system.@system[0].timezone='WIB-7'
 set system.@system[0].zonename='Asia/Jakarta'
 delete system.ntp.server
-add_list system.ntp.server='pool.ntp.org'
-add_list system.ntp.server='id.pool.ntp.org'
-add_list system.ntp.server='time.google.com'
+add_list system.ntp.server='0.id.pool.ntp.org'
+add_list system.ntp.server='1.id.pool.ntp.org'
+add_list system.ntp.server='2.id.pool.ntp.org'
+add_list system.ntp.server='3.id.pool.ntp.org'
 commit system
 EOF
 
@@ -74,15 +75,15 @@ if [ -d /sys/class/ieee80211 ] && [ -n "$(ls /sys/class/ieee80211 2>/dev/null)" 
     uci set wireless.@wifi-iface[0].disabled='0'
     uci set wireless.@wifi-iface[0].mode='ap'
     uci set wireless.@wifi-iface[0].encryption='psk2'
-    uci set wireless.@wifi-iface[0].key='XIDZs2026'
+    uci set wireless.@wifi-iface[0].key='123456879'
     uci set wireless.@wifi-device[0].country='ID'
     if grep -q "Raspberry Pi 5\|Raspberry Pi 4\|Raspberry Pi 3" /proc/cpuinfo; then
-        uci set wireless.@wifi-iface[0].ssid='XIDZs_5G'
+        uci set wireless.@wifi-iface[0].ssid='DreamOs-5G'
         uci set wireless.@wifi-device[0].channel='149'
         uci set wireless.@wifi-device[0].htmode='VHT80'
     else
-        uci set wireless.@wifi-iface[0].ssid='XIDZs'
-        uci set wireless.@wifi-device[0].channel='1'
+        uci set wireless.@wifi-iface[0].ssid='DreamOs-2.4G'
+        uci set wireless.@wifi-device[0].channel='11'
         uci set wireless.@wifi-device[0].htmode='HT20'
     fi 
     uci commit wireless
@@ -119,12 +120,12 @@ echo "Setting up TinyFM..."
 ln -sf / /www/tinyfm/rootfs
 
 # System customizations
-echo "Applying system.."
-sed -i -e 's/\[ -f \/etc\/banner \] && cat \/etc\/banner/#&/' -e 's/\[ -n \"\$FAILSAFE\" \] && cat \/etc\/banner.failsafe/& || \/usr\/bin\/syntax/' /etc/profile
+#echo "Applying system.."
+#sed -i -e 's/\[ -f \/etc\/banner \] && cat \/etc\/banner/#&/' -e 's/\[ -n \"\$FAILSAFE\" \] && cat \/etc\/banner.failsafe/& || \/usr\/bin\/syntax/' /etc/profile
 
 # UI customizations
 echo "Modifying UI elements..."
-sed -i "s#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' / ':'')+(luciversion||''),#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' | xidz_x':''),#g" /www/luci-static/resources/view/status/include/10_system.js
+sed -i "s#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' / ':'')+(luciversion||''),#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' | ':''),#g" /www/luci-static/resources/view/status/include/10_system.js
 sed -i -E 's/icons\/port_%s\.(svg|png)/icons\/port_%s.gif/g' /www/luci-static/resources/view/status/include/29_ports.js
 mv /www/luci-static/resources/view/status/include/29_ports.js /www/luci-static/resources/view/status/include/11_ports.js
 

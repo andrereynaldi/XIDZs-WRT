@@ -55,7 +55,7 @@ on:
       tunnel:
         description: "Select Tunnel VPN"
         required: true
-        default: "openclash"
+        default: "no-tunnel"
         type: choice
         options:
           - openclash

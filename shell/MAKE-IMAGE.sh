@@ -26,8 +26,9 @@ PACKAGES+=" -kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 -kmod-usb-net-asix -kmod-
 PACKAGES+=" kmod-mii kmod-usb-net kmod-usb-wdm kmod-usb-net-rndis kmod-usb-net-cdc-ether kmod-usb-net-cdc-ncm kmod-usb-net-sierrawireless \
 kmod-usb-net-qmi-wwan uqmi luci-proto-qmi kmod-usb-acm kmod-usb-net-huawei-cdc-ncm kmod-usb-net-cdc-mbim umbim \
 kmod-usb-serial kmod-usb-serial-option kmod-usb-serial-wwan kmod-usb-serial-qualcomm kmod-usb-serial-sierrawireless \
--modemmanager luci-proto-modemmanager qmi-utils mbim-utils usbutils luci-proto-ncm kmod-usb-ohci kmod-usb-uhci \
+qmi-utils mbim-utils usbutils luci-proto-ncm kmod-usb-ohci kmod-usb-uhci \
 kmod-usb2 kmod-usb-ehci -kmod-usb3 kmod-nls-utf8 kmod-macvlan usb-modeswitch xmm-modem luci-proto-xmm"
+EXCLUDED+=" -modemmanager luci-proto-modemmanager"
 
 # MODEM TOOLS
 #PACKAGES+=" atinout modeminfo modemband sms-tool luci-app-modeminfo luci-app-modemband luci-app-sms-tool-js picocom minicom"
@@ -114,7 +115,11 @@ configure_profile_packages() {
 
     if [[ "${TYPE:-}" == "OPHUB" ]] || [[ "${TYPE:-}" == "ULO" ]]; then
         PACKAGES+=" btrfs-progs kmod-fs-btrfs luci-app-amlogic"
-        EXCLUDED+=" -procd-ujail"
+#        EXCLUDED+=" -procd-ujail"
+        EXCLUDED+=" -libiwinfo-data -libiwinfo20230701 -rpcd-mod-iwinfo -libiwinfo -rpcd-mod-iwinfo -kmod-nls-cp437 -kmod-nls-iso8859-1 -procd-ujail -kmod-tun \
+        -kmod-amazon-ena -kmod-e1000e -kmod-vmxnet3 -kmod-rtc-rx8025 -kmod-i2c-mux-pca954x -kmod-gpio-pca953x -partx-utils -kmod-wdt-sp805 -kmod-mvneta -kmod-mvpp2 \
+        -kmod-fsl-dpaa1-net -kmod-fsl-dpaa2-net -kmod-fsl-enetc-net -kmod-dwmac-imx -kmod-fsl-fec -kmod-dwmac-rockchip -kmod-dwmac-sun8i -kmod-phy-aquantia \
+        -kmod-phy-broadcom -kmod-phy-marvell -kmod-phy-marvell-10g -kmod-sfp -kmod-atlantic -kmod-bcmgenet -kmod-octeontx2-net -kmod-renesas-net-avb -kmod-phy-realtek -kmod-phy-smsc"
     fi
 }
 

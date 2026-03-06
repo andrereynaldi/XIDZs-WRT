@@ -25,19 +25,32 @@ echo "src/gz custom_packages https://dl.openwrt.ai/latest/packages/$(grep "OPENW
 
 # Basic system
 echo "Setting root password..."
-(echo "DreamOs"; sleep 1; echo "DreamOs") | passwd > /dev/null
+(echo "123456879"; sleep 1; echo "123456879") | passwd > /dev/null
 
 echo "Configuring hostname and timezone..."
 uci batch <<EOF
-set system.@system[0].hostname='XIDZsWRT'
+set system.@system[0].hostname='DreamOs'
 set system.@system[0].timezone='WIB-7'
 set system.@system[0].zonename='Asia/Jakarta'
+set system.@system[0].description='To Infinity and Beyond!'
+set system.@system[0].zram_size_mb='512'
+set system.@system[0].zram_comp_algo='lz4'
 delete system.ntp.server
 add_list system.ntp.server='0.id.pool.ntp.org'
 add_list system.ntp.server='1.id.pool.ntp.org'
 add_list system.ntp.server='2.id.pool.ntp.org'
 add_list system.ntp.server='3.id.pool.ntp.org'
 commit system
+EOF
+
+## Amlogic
+echo "Configuring ARM CPU..."
+uci batch <<EOF
+set amlogic.armcpu=settings
+set amlogic.armcpu.governor0='performance'
+set amlogic.armcpu.minfreq0='1200000'
+set amlogic.armcpu.maxfreq0='1512000'
+commit amlogic
 EOF
 
 # language and theme
@@ -125,7 +138,7 @@ ln -sf / /www/tinyfm/rootfs
 
 # UI customizations
 echo "Modifying UI elements..."
-sed -i "s#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' / ':'')+(luciversion||''),#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' | ':''),#g" /www/luci-static/resources/view/status/include/10_system.js
+sed -i "s#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' / ':'')+(luciversion||''),#_('Firmware Version'),(L.isObject(boardinfo.release)?boardinfo.release.description+' | DreamOs™':''),#g" /www/luci-static/resources/view/status/include/10_system.js
 sed -i -E 's/icons\/port_%s\.(svg|png)/icons\/port_%s.gif/g' /www/luci-static/resources/view/status/include/29_ports.js
 mv /www/luci-static/resources/view/status/include/29_ports.js /www/luci-static/resources/view/status/include/11_ports.js
 

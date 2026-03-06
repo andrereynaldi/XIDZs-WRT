@@ -100,7 +100,7 @@ luci-app-mactodong -internet-detector -internet-detector-mod-modem-restart -luci
 ookla-speedtest luci-app-ttyd luci-app-tinyfm luci-app-ramfree luci-app-poweroffdevice -luci-app-lite-watchdog"
 
 # DISABLED SERVICES
-DISABLED_SERVICES="xidzs zram"
+DISABLED_SERVICES="xidzs todong"
 
 # PROFILE SPECIFIC
 configure_profile_packages() {

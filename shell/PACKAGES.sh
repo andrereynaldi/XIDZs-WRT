@@ -68,7 +68,7 @@ packages_custom+=(
 #    "luci-app-tailscale_|https://api.github.com/repos/asvow/luci-app-tailscale/releases/latest"
 #    "luci-app-ipinfo_|https://api.github.com/repos/bobbyunknown/luci-app-ipinfo/releases/latest"
     "luci-app-netmonitor_|https://api.github.com/repos/de-quenx/luci-app-netmonitor/releases/latest"
-    "luci-theme-argon_|https://api.github.com/repos/de-quenx/luci-theme-argon/releases/latest"
+    "luci-theme-argon_|https://api.github.com/repos/andrereynaldi/luci-theme-argon/releases/latest"
     "luci-app-ttl_|https://api.github.com/repos/de-quenx/custom-x/releases/latest"
     "luci-app-temp-status_|https://api.github.com/repos/de-quenx/kwrt-packages/releases/latest"
 )
